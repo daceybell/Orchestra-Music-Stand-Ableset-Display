@@ -29,11 +29,22 @@ Install these via the Arduino Library Manager (`Ctrl+Shift+I` / `Cmd+Shift+I`):
 2. **Adafruit GFX Library** (by *Adafruit*) — Base graphics primitives and font headers (`FreeSansBold`).
 
 *(Note: Native OSC parsing is embedded directly in the project code—no external OSC library is required.)*
+
+---
+### Network & Failover Behavior
+
+* **Multi-Network Support:** Configured for automatic roaming across multiple Wi-Fi networks (SSIDs, passwords, and static AbleSet IPs).
+* **Automatic Connection:** Upon boot, the board scans for known networks and connects to the first available match in your configuration list.
+* **AbleSet Hunt & Fallback (30s Timeout):** If Wi-Fi connects successfully but AbleSet OSC telemetry is not detected within **30 seconds**, the display disconnects and moves to the next configured network in the list to hunt for AbleSet.
+* **Offline Recovery Mode:** If no configured networks are reachable after scanning and cycling through the entire network list **twice**, the display enters an offline recovery state and presents a **"Retry"** screen.
+* **Manual Reconnect:** Press the physical **`BOOT` button** (GPIO 9) on the ESP32-C6 board at any time to re-trigger a full Wi-Fi scan and reconnect cycle.
+  
 ---
 ### Configuration & Setup
-1. Copy `user_wifi_setup.h.example` to `user_wifi_setup.h`.
-2. Open `user_wifi_setup.h` and configure your network details:
+
+* Open `user_wifi_setup.h` and configure your network details:
    ```cpp
+
    static const WifiNetwork WIFI_NETWORKS[] = {
      { "SSID_NAME", "WIFI_PASSWORD", "STATIC_ABLESET_IP" },
    };
