@@ -1,6 +1,9 @@
 /*
  * AbleSet stage display — Waveshare ESP32-C6 LCD 1.47"
  * -----------------------------------------------------
+ * Copyright (c) 2026 by Dacey Bell (daceybell@duck.com)
+ * https://firstwest.cc & https://daceybell.weebly.com/
+ * -----------------------------------------------------
  * Connects to a WiFi network (2.4 GHz), subscribes to AbleSet's OSC
  * feed, and shows current song and current measure.
  *
